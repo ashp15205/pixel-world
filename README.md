@@ -3,12 +3,17 @@
 > **Turn any website into a playable, explorable 2D pixel-art universe.**  
 > Paste a URL, explore pages as interactive buildings, walk down roads connecting hyperlinks, and inspect full page markdown in a retro RPG world.
 
+[![Live Demo](https://img.shields.io/badge/🎮%20Play%20Online-pixel--world--rho.vercel.app-00c853?style=for-the-badge&logo=vercel)](https://pixel-world-rho.vercel.app/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.0-61dafb.svg?logo=react)](https://react.dev/)
 [![Phaser](https://img.shields.io/badge/Phaser-3.90-red.svg?logo=phaser)](https://phaser.io/)
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF.svg?logo=vite)](https://vitejs.dev/)
-[![Vercel Ready](https://img.shields.io/badge/Vercel-Deployed-black.svg?logo=vercel)](https://vercel.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+---
+
+### 🚀 **Live Application:** [https://pixel-world-rho.vercel.app/](https://pixel-world-rho.vercel.app/)
+*No installation needed! Jump straight in, test the built-in demo world, or paste any website to generate your own pixel island.*
 
 ---
 
@@ -30,6 +35,21 @@ Every webpage becomes a unique physical building categorized into architectural 
 
 ---
 
+## 🕹️ How to Play & Controls
+
+| Action | Controls |
+| :--- | :--- |
+| **Move Character** | `W`, `A`, `S`, `D` or `Arrow Keys` |
+| **Inspect / Read Page** | Approach any building and press `E`, or **Click** on it |
+| **Pan Camera** | Click & Drag anywhere on map, or **2-Finger Swipe** on trackpad |
+| **Zoom In / Out** | Mouse scroll wheel or trackpad pinch (0.15x to 2.5x) |
+| **Recenter Character** | Click the **🎯 Recenter** button in bottom HUD |
+| **Fit Entire Island** | Click the **🗺️ View Whole Map** button in bottom HUD |
+| **Quick Search** | Press `/` key to search all page titles, URLs, and summaries |
+| **Download Map** | Click **📸 Screenshot** in top bar to save a high-res PNG of the full island |
+
+---
+
 ## ✨ Features
 
 - **🌐 Any Public Website**: Turn documentation portals, SaaS landing pages, engineering blogs, or knowledge bases into explorable islands.
@@ -39,11 +59,11 @@ Every webpage becomes a unique physical building categorized into architectural 
   - URL-derived district zoning with distinct color codes and architectural styles.
 - **🎮 Phaser 3 Game Engine**:
   - Crisp retro pixel art with high-contrast, scalable text labels.
-  - Smooth player avatar with 8-directional movement (`WASD` / `Arrow Keys`).
+  - Smooth player avatar with 8-directional movement.
   - Day/night ambiance lighting and organic scenery (trees, lanterns, water shorelines).
   - Approach proximity triggers (`[E] Read Page` tooltip).
 - **🕹️ Intuitive Map Camera & Navigation**:
-  - **Pan & Zoom**: Smooth mouse drag, 2-finger trackpad panning, and mouse wheel zooming (0.15x to 2.5x).
+  - **Pan & Zoom**: Smooth mouse drag, 2-finger trackpad panning, and mouse wheel zooming.
   - **Recenter View (`🎯 Recenter`)**: Instantly re-anchors the camera onto your character at 1.0x scale.
   - **Fit Whole Map (`🗺️ View Whole Map`)**: Mathematically calculates the bounding box and centers the entire island within your viewport in one click.
 - **🔍 Quick In-World Search (`/`)**:
@@ -87,95 +107,9 @@ flowchart LR
 
 ---
 
-## 🚀 Quick Start (Local Development)
-
-### Prerequisites
-- **Node.js**: v20 or higher
-- **npm**: v9 or higher
-- *(Optional)*: A free API key from [Context.dev](https://context.dev) (a demo world is included without an API key).
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/pixelworld.git
-cd pixelworld
-```
-
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Run the development server
-```bash
-npm run dev
-```
-
-Open your browser at `http://localhost:5173/`.  
-The bundled offline demo world loads immediately. To map live domains, paste your Context.dev API key into the top input bar.
-
-> **Note for Local API Testing**: `npm run dev` serves the Vite client. To test the live `/api/map` and `/api/scrape` serverless endpoints locally, run:
-> ```bash
-> npx vercel dev
-> ```
-
----
-
-## 🚢 Deployment Guide
-
-### Deploying to GitHub
-
-1. **Initialize Git** (if not already done):
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial commit of PixelWorld 2D website visualizer"
-   ```
-
-2. **Create a remote repository on GitHub**:
-   - Go to [github.com/new](https://github.com/new).
-   - Name your repository (e.g. `pixelworld`).
-   - Leave it public or private.
-
-3. **Link and push**:
-   ```bash
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/pixelworld.git
-   git push -u origin main
-   ```
-
----
-
-### Deploying to Vercel
-
-PixelWorld is pre-configured for seamless zero-config deployment on **Vercel** with support for both the Vite frontend and the serverless functions in `api/`.
-
-#### Option A: Via the Vercel Dashboard (Recommended)
-1. Sign in to [Vercel](https://vercel.com).
-2. Click **"Add New..."** → **"Project"**.
-3. Import your **PixelWorld** GitHub repository.
-4. Vercel automatically detects the project settings:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. *(Optional)* **Environment Variables**:
-   - `ALLOWED_ORIGIN`: *(Optional)* If hosting the frontend on a custom separate domain and using Vercel solely for API proxying. Default allows same-origin.
-   - `CONTEXT_DEV_API_KEY`: *(Optional)* If you wish to provide a global server-side fallback key for public visitors. Otherwise, users bring their own key (BYOK).
-6. Click **Deploy**. Vercel will build and assign you a live production URL (e.g., `https://pixelworld.vercel.app`).
-
-#### Option B: Via Vercel CLI
-```bash
-npm install -g vercel
-vercel
-# Follow the interactive prompts, accepting the default Vite settings
-vercel --prod
-```
-
----
-
 ## 🔒 Security & Vulnerability Analysis
 
-A critical question for web visualization tools is: **"Is this safe to run and deploy?"**  
-PixelWorld has been engineered with defensive security principles:
+PixelWorld is engineered with defensive security principles:
 
 ### 1. Bring-Your-Own-Key (BYOK) Isolation
 - **No Server Persistence**: API keys are passed on a per-request basis in the `x-context-dev-key` HTTP header directly to the stateless serverless function.
